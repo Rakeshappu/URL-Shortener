@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const { connectToMongoDB } = require("./connect");
 const urlRoute = require("./routes/url")
 const URL = require("./models/url");
@@ -11,13 +11,15 @@ connectToMongoDB('mongodb://localhost:27017/short-url').then(()=> console.log('m
 
 app.use(express.json());
 
-app.use("/use", urlRoute);
+app.use("/url", urlRoute);
  
 app.get('/:shortID', async (req,res)=>{
     const shortID = req.params.shortId;
     const entry = await URL.findOneAndUpdate({
         shortID
-    },{$push:{
+    },
+    {
+        $push:{
         visitHistory:{
             timestamp: Date.now(),
         } 

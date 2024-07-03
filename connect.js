@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 mongoose.set("strictQuery", true);
 
 async function connectToMongoDB(url){
@@ -7,4 +7,4 @@ async function connectToMongoDB(url){
 
 module.exports = {
     connectToMongoDB,
-}
+};
